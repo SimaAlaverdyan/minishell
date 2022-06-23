@@ -6,7 +6,7 @@
 /*   By: salaverd <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 17:53:13 by salaverd          #+#    #+#             */
-/*   Updated: 2021/04/25 17:53:14 by salaverd         ###   ########.fr       */
+/*   Updated: 2022/05/13 19:03:36 by salaverd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ static unsigned int	ft_module_fd(int n)
 		return (n);
 }
 
-void				ft_putnbr_fd(int n, int fd)
+void	ft_putnbr_fd(int n, int fd)
 {
-	unsigned int num;
+	unsigned int	num;
 
 	if (n < 0)
 		ft_putchar_fd('-', fd);

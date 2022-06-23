@@ -1,28 +1,38 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: tumolabs <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/06 15:48:57 by tumolabs          #+#    #+#             */
-/*   Updated: 2022/05/11 20:53:20 by tumolabs         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../include/minishell.h"
+
+int	check_and_init(int argc, char **envp, t_env **env_lst)
+{
+	if (argc > 1)
+	{
+		ft_putstr_fd("Argument error\n", 2);
+		return (EXIT_FAILURE);
+	}
+	env_list(envp, env_lst);
+	return (EXIT_SUCCESS);
+}
 
 int main(int argc, char **argv, char **envp)
 {
-	int i = 0;
-	//char *line;
+	t_env		*env_lst;
+	t_token		*tokens;
+	char		*line;
+	int			status;
 
-	//line = readline("line");
-	(void)argc;
 	(void)argv;
-	//while (true)
-	//	printf( "%s\n", readline("GXX: "));
-	while(true)
-		printf("%s\n", envp[i++]);
+	if (check_and_init(argc, envp, &env_lst) == 1)
+		return (0);
+	while (true)
+	{
+		line = readline("GXX: ");
+		if (!line)
+		{
+			ft_putstr_fd("exit", 1);
+			return (EXIT_SUCCESS);
+		}
+		printf("%s\n", line);
+		if (ft_strncmp(line, "", ft_strlen(line)) != 0)
+			add_history(line);
+	}
+	
 	return (0);
 }

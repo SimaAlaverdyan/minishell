@@ -6,80 +6,97 @@
 /*   By: salaverd <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 17:53:45 by salaverd          #+#    #+#             */
-/*   Updated: 2021/04/25 17:53:46 by salaverd         ###   ########.fr       */
+/*   Updated: 2022/05/13 19:27:28 by salaverd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		count_words(char *str, char c)
+static int	ft_count(char const *s, char sep)
 {
-	int i;
-	int count;
-	int word;
+	int	i;
+	int	count;
 
-	i = 0;
+	if (s == 0 || s[0] == 0)
+		return (0);
+	i = 1;
 	count = 0;
-	word = 0;
-	while (str[i] == c && str[i])
-		i++;
-	while (str[i])
+	if (s[0] != sep)
+		count++;
+	while (s[i])
 	{
-		if (str[i] != c && str[i])
-			word = 1;
-		if (str[i] == c)
-		{
-			while (str[i] == c && str[i])
-				i++;
-			if (str[i])
-				count++;
-		}
-		else
-			i++;
-	}
-	return (count + word);
-}
-
-static	char	*put_word(char *str, char c)
-{
-	int		i;
-	char	*arr;
-
-	i = 0;
-	arr = 0;
-	while (str[i] && str[i] != c)
+		if (s[i] != sep && s[i - 1] == sep)
+			count++;
 		i++;
-	if (!(arr = (char *)malloc(sizeof(char) * (i + 1))))
-		return (NULL);
-	ft_strlcpy(arr, str, i + 1);
-	return (arr);
+	}
+	return (count);
 }
 
-char			**ft_split(char const *s, char c)
+static char	**ft_mmalloc(char const *s, char sep)
 {
-	int		i;
-	int		words;
-	char	**array;
+	int		len;
+	char	**tab_s;
 
+	len = ft_count(s, sep);
+	tab_s = malloc(sizeof(*tab_s) * (len + 1));
+	if (!tab_s)
+		return (NULL);
+	return (tab_s);
+}
+
+static int	ft_count_in_between(char const *s, char sep, int i)
+{
+	int		count;
+
+	count = 0;
+	while (s[i] && s[i] == sep)
+		i++;
+	while (s[i] && s[i] != sep)
+	{
+		count++;
+		i++;
+	}
+	return (count);
+}
+
+static char	**ft_free(char **s_tab, int i)
+{
+	int	j;
+
+	j = 0;
+	while (j < i && s_tab[j])
+	{
+		free(s_tab[j]);
+		j++;
+	}
+	free(s_tab);
+	return (0);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	int		k;
+	int		i;
+	int		j;
+	char	**tab_s;
+
+	k = 0;
 	i = -1;
-	if (!s)
-		return (NULL);
-	words = count_words((char *)s, c);
-	if (!(array = malloc(sizeof(char *) * (words + 1))))
-		return (NULL);
-	while (++i < words)
+	tab_s = ft_mmalloc(s, c);
+	if (!tab_s)
+		return (0);
+	while (++i < ft_count(s, c))
 	{
-		while (s[0] == c)
-			s++;
-		if (!(array[i] = put_word((char *)s, c)))
-		{
-			while (i > 0)
-				free(array[i--]);
-			free(array);
-			return (NULL);
-		}
-		s += ft_strlen(array[i]);
+		j = 0;
+		tab_s[i] = malloc(ft_count_in_between(s, c, k) + 1);
+		if (!tab_s)
+			return (ft_free(tab_s, i));
+		while (s[k] && s[k] == c)
+			k++;
+		while (s[k] && s[k] != c)
+			tab_s[i][j++] = s[k++];
+		tab_s[i][j] = '\0';
 	}
-	array[i] = 0;
-	return (array);
+	tab_s[i] = 0;
+	return (tab_s);
 }

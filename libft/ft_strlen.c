@@ -6,7 +6,7 @@
 /*   By: salaverd <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 17:55:45 by salaverd          #+#    #+#             */
-/*   Updated: 2021/04/25 17:55:46 by salaverd         ###   ########.fr       */
+/*   Updated: 2022/05/13 19:02:35 by salaverd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 size_t	ft_strlen(const char *str)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (str[i])

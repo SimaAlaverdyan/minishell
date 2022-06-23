@@ -6,7 +6,7 @@
 /*   By: salaverd <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 17:57:35 by salaverd          #+#    #+#             */
-/*   Updated: 2021/04/25 17:57:38 by salaverd         ###   ########.fr       */
+/*   Updated: 2022/05/13 19:29:08 by salaverd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static char	*fail_start(void)
 {
-	char *array;
+	char	*array;
 
 	array = (char *)malloc(sizeof(char) * 1);
 	if (!array)
@@ -23,7 +23,7 @@ static char	*fail_start(void)
 	return (array);
 }
 
-char		*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	size_t			i;
 	size_t			size;

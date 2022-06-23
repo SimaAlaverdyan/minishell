@@ -6,7 +6,7 @@
 /*   By: salaverd <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 17:38:39 by salaverd          #+#    #+#             */
-/*   Updated: 2021/04/25 17:38:40 by salaverd         ###   ########.fr       */
+/*   Updated: 2022/05/13 19:40:49 by salaverd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,15 @@ static int	check_size(int n)
 	return (count);
 }
 
-char		*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	char	*array;
 	long	res;
 	int		i;
 
 	i = 0;
-	if (!(array = (char*)malloc(sizeof(char) * check_size(n) + 1)))
+	array = (char *)malloc(sizeof(char) * check_size(n) + 1);
+	if (!array)
 		return (NULL);
 	if (n < 0)
 		array[0] = '-';

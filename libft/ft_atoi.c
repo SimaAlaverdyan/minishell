@@ -6,45 +6,34 @@
 /*   By: salaverd <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 17:32:34 by salaverd          #+#    #+#             */
-/*   Updated: 2021/04/25 17:32:36 by salaverd         ###   ########.fr       */
+/*   Updated: 2022/05/13 19:37:16 by salaverd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	check(char ch)
+int	ft_atoi(const char *str)
 {
-	if (ch == ' ' || ch == '\t' || ch == '\v' ||
-			ch == '\r' || ch == '\n' || ch == '\f')
-		return (1);
-	return (0);
-}
-
-int			ft_atoi(const char *str)
-{
-	int				i;
-	int				sing;
-	int				count;
-	long long int	res;
+	long	i;
+	long	nbr;
+	int		min;
 
 	i = 0;
-	res = 0;
-	count = 0;
-	sing = 1;
-	while (check(str[i]) == 1)
-		i++;
-	if (str[i] == '-' || str[i] == '+')
+	min = 0;
+	nbr = 0;
+	while (str[i] != '\0' && (str[i] == 32 || str[i] == '\t' || str[i] == '\n'
+			|| str[i] == '\r' || str[i] == '\v' || str[i] == '\f'))
+			i++;
+	if (str[i] != '\0' && str[i] == '-')
 	{
-		sing = ((str[i] == '-') ? -1 : 1);
+		min = 1;
 		i++;
 	}
-	while ((str[i] >= '0' && str[i] <= '9') && str[i] != '\0')
-	{
-		res = (res * 10) + (str[i] - '0');
+	else if (str[i] == '+')
 		i++;
-		count++;
-		if (count > 19)
-			return ((sing == -1) ? 0 : -1);
-	}
-	return (res * sing);
+	while (str[i] != '\0' && ft_isdigit(str[i]))
+		nbr = (nbr * 10) + (str[i++] - '0');
+	if (min == 1)
+		return (-nbr);
+	return (nbr);
 }

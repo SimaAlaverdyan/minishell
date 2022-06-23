@@ -6,7 +6,7 @@
 /*   By: salaverd <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 17:33:42 by salaverd          #+#    #+#             */
-/*   Updated: 2021/04/25 17:33:47 by salaverd         ###   ########.fr       */
+/*   Updated: 2022/05/13 19:35:52 by salaverd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*ft_calloc(size_t number, size_t size)
 {
-	void *array;
+	void	*array;
 
 	array = (void *)malloc(size * number);
 	if (!array)

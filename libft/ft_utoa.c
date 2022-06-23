@@ -6,13 +6,13 @@
 /*   By: salaverd <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 17:59:33 by salaverd          #+#    #+#             */
-/*   Updated: 2021/04/25 17:59:37 by salaverd         ###   ########.fr       */
+/*   Updated: 2022/05/13 19:06:57 by salaverd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		count_num(long n)
+static int	count_num(long n)
 {
 	int	i;
 
@@ -25,7 +25,7 @@ static int		count_num(long n)
 	return (i);
 }
 
-char			*ft_utoa(unsigned int n)
+char	*ft_utoa(unsigned int n)
 {
 	char	*str;
 	int		size;
@@ -35,7 +35,8 @@ char			*ft_utoa(unsigned int n)
 	size = count_num(num);
 	if (n == 0)
 		return (str = ft_strdup("0"));
-	if (!(str = malloc(sizeof(char) * size)))
+	str = malloc(sizeof(char) * size);
+	if (!str)
 		return (0);
 	str[--size] = '\0';
 	while (num / 10 >= 1)

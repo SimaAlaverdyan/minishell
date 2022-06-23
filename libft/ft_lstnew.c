@@ -6,7 +6,7 @@
 /*   By: salaverd <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 17:49:10 by salaverd          #+#    #+#             */
-/*   Updated: 2021/04/25 17:50:17 by salaverd         ###   ########.fr       */
+/*   Updated: 2022/05/13 19:01:11 by salaverd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_list	*ft_lstnew(void *content)
 {
-	t_list *arr_list;
+	t_list	*arr_list;
 
 	arr_list = (t_list *)malloc(sizeof(t_list) * 1);
 	if (!arr_list)

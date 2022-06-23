@@ -6,7 +6,7 @@
 /*   By: salaverd <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 17:53:27 by salaverd          #+#    #+#             */
-/*   Updated: 2021/04/25 17:53:29 by salaverd         ###   ########.fr       */
+/*   Updated: 2022/05/13 17:46:19 by salaverd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,12 @@ int	ft_putstr_fd(char *s, int fd)
 
 	i = 0;
 	if (s && fd)
+	{
 		while (s[i])
 		{
 			ft_putchar_fd(s[i], fd);
 			i++;
 		}
+	}
 	return (i);
 }

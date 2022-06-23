@@ -6,7 +6,7 @@
 /*   By: salaverd <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 17:33:14 by salaverd          #+#    #+#             */
-/*   Updated: 2021/04/25 17:33:17 by salaverd         ###   ########.fr       */
+/*   Updated: 2022/05/13 19:07:35 by salaverd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	char *str;
+	char	*str;
 
 	str = (char *)s;
 	while (n--)

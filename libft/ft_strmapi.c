@@ -6,7 +6,7 @@
 /*   By: salaverd <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 17:55:57 by salaverd          #+#    #+#             */
-/*   Updated: 2021/04/25 17:55:58 by salaverd         ###   ########.fr       */
+/*   Updated: 2022/05/13 19:30:17 by salaverd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	i = 0;
 	res = NULL;
 	len = ft_strlen(s);
-	if ((res = (char *)ft_calloc(sizeof(char), len + 1)) != NULL)
+	res = (char *)ft_calloc(sizeof(char), len + 1);
+	if (res != NULL)
 	{
 		while (s[i])
 		{
